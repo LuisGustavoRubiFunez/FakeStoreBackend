@@ -4,6 +4,8 @@ import { fileURLToPath } from 'url';
 import path from 'path';
 import routerPrueba from './rutas/prueba.js';
 import routerProductos from './rutas/productos.js';
+import cors from 'cors'
+
 
 dotenv.config();
 const app = express();
@@ -12,6 +14,10 @@ app.use(express.json()); // Para manejar JSON en las peticiones
 // Calcular __dirname en ES Modules
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+
+app.use(cors({
+    origin: 'http://localhost:5173'
+}));
 
 // Servir archivos estáticos desde la carpeta "public"
 app.use('/static', express.static(path.join(__dirname, 'public')));
