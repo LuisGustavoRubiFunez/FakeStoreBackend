@@ -15,9 +15,7 @@ app.use(express.json()); // Para manejar JSON en las peticiones
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-app.use(cors({
-    origin: 'http://localhost:5173'
-}));
+app.use(cors());
 
 // Servir archivos estáticos desde la carpeta "public"
 app.use('/static', express.static(path.join(__dirname, 'public')));
